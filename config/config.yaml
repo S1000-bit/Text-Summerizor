@@ -1,0 +1,5 @@
+artifacts_root: artifacts
+
+data ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://github.com/S1000-bit/
