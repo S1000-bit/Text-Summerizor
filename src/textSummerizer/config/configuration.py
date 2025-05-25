@@ -1,6 +1,7 @@
 from textSummerizer.constants import *
 from textSummerizer.utils.common import read_yaml,create_directories
-from textSummerizer.entity import DataIngestionConfig
+from textSummerizer.entity import (DataIngestionConfig,DataValidationConfig)
+
 
 class ConfigurationManger:
     def __init__(self,
@@ -21,3 +22,14 @@ class ConfigurationManger:
             unzip_dir = config.unzip_dir
         )     
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+        create_directories([config.root_dir],verbose=True)
+        
+        data_validation_config = DataValidationConfig(
+            root_dir = config.root_dir,
+            STATUS_FILE = config.STATUS_FILE,
+            ALL_REQUIRED_FILES = config.ALL_REQUIRED_FILES
+        )     
+        return data_validation_config
